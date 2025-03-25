@@ -19,7 +19,7 @@ This application showcases how to build an AI agent that can process payments us
 
 ## Live Demo
 
-Try out the application: [AI Stripe Simple Demo](ai-stripe-sample-demo.mp4)
+Try out the application: [AI Stripe Simple Demo]([ai-stripe-sample-demo.mp4](https://drive.google.com/file/d/1eb4LzbPwwx9mi20Trnsz6dksEEkrrfgI/view?usp=sharing))
 
 ## Local Development
 
