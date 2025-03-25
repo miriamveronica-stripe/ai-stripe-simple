@@ -23,6 +23,7 @@ Try out the application: [AI Stripe Simple Demo](https://drive.google.com/file/d
 
 ## Local Development
 
+```bash
 env.local file
 
 OPENAI_API_KEY= sk-proj-********
@@ -30,11 +31,11 @@ STRIPE_SECRET_KEY=sk_test_******
 STRIPE_ACCT=<ACCTNAME>
 STRIPE_ACCTID=acct_***
 
-First, run the development server:
 
-```bash
 1. Install dependencies:
 npm install
+
+2. run the development server:
 
 npm run dev
 # or
