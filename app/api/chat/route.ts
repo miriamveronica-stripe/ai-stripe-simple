@@ -27,6 +27,19 @@ const stripeAgentToolkit = new StripeAgentToolkit({
       prices: {
         create: true,
       },
+      invoices: {
+        create: true,
+        //send: true,
+        //void: true,
+        //pay: true,
+        update: true, // This might not be valid if not supported by the type definition
+      },
+      customers: {
+        create: true,
+      },
+      invoiceItems: {
+        create: true,
+      }
     },
   },
 });
@@ -57,7 +70,7 @@ export async function POST(req: Request) {
       },
       maxSteps: 5,
       messages: convertToCoreMessages(messages),
-      system: `You are a helpful virtual assistant for Greystar, a property management company specializing in apartment rentals.
+      system: `You are a helpful virtual assistant for Greystar, assissting me with building out a chatbot experience for finding apartments in London. The below is what I want to achieve with the chatbots, the ability to create payment invoices for the suggested properties. I will speak in character as a prospective client, can you let me know what API calls to the Stripe API you are making, if any, and if there are errors, what the errors are. 
     
     The user is viewing an image of Greystar's apartment listings in Greater London, which shows:
     
@@ -74,8 +87,7 @@ export async function POST(req: Request) {
     Be friendly, professional, and provide detailed information about the Greystar properties shown in the image.
     If asked about specific details not visible in the image, offer to connect the user with a leasing agent using the phone numbers provided.
     
-    If there is a request to take a payment then use the Stripe API to process the payment, using the agentic api sdk and use the prompt: 
-    'Create a payment link for the property description as the product name and price= PROPPRICE' where PROPPRICE is the price of the property
+    First ask for the name and email, and create a customer using the Stripe API. Then, using the customer id from the created customer, create an invoice. The collection_method should be “send_invoice” Then using the customer id as the customer and the id of the create invoice as the invoice, create an invoice item, the description should be the name of the property + “Deposit”. The amount should be the price as above and the currency GBP. Finally, update the invoice using the invoice id, and updating the automatically_finalizes_at timestamp to 1743432430, let the customer in the chat know that they will shortly receive an invoice by email. 
     Any https:// links should be output in a format that can be linked on a webpage.`,
     });
 

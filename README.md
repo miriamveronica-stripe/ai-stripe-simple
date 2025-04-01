@@ -26,10 +26,7 @@ Try out the application: [AI Stripe Simple Demo](https://drive.google.com/file/d
 ```bash
 env.local file
 
-OPENAI_API_KEY= sk-proj-********
-STRIPE_SECRET_KEY=sk_test_******
-STRIPE_ACCT=<ACCTNAME>
-STRIPE_ACCTID=acct_***
+
 
 
 1. Install dependencies:
